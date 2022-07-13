@@ -1,0 +1,33 @@
+html {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+input {
+  font-size: 1rem;
+  padding: 0.3em 0.5em;
+  margin: 0 0.5rem;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.25em 0.5em;
+  margin: 0 1rem;
+}
+
+label {
+  font-size: 1.5rem;
+}

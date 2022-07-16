@@ -1,0 +1,1 @@
+import{m as c,t as e}from"./tap.3b5cc1bd.js";import{f as o}from"./header.42500b50.js";const r=document.querySelector("#input"),m=document.querySelector("#clear"),n=o(m,"click");n.pipe(c(()=>""),e(t=>{r.value=t})).subscribe();

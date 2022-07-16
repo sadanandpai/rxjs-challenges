@@ -7,13 +7,12 @@ html {
   box-sizing: inherit;
 }
 
-#app {
+body{
+  text-align: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  
 }
 
 input {
@@ -30,4 +29,21 @@ button {
 
 label {
   font-size: 1.5rem;
+}
+
+main {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.challenge {
+  font-size: 1.25rem;
+  background-color: black;
+  color: white;
+  padding: 1em 0.5em ;
+  user-select: none;
+  font-weight: 600;
+  text-decoration: none;
 }

@@ -1,16 +1,18 @@
-import { fromEvent, map, tap } from "rxjs";
+import { fromEvent, map, merge, tap } from "rxjs";
 
-const reverse = (s: string) => s.split("").reverse().join("");
+const button1 = <HTMLButtonElement>document.querySelector("#button1")!;
+const button2 = <HTMLButtonElement>document.querySelector("#button2")!;
+const label = <HTMLLabelElement>document.querySelector("#label")!;
 
-const input = <HTMLInputElement>document.querySelector("#input")!;
-const label = document.querySelector("#label")!;
+const text1$ = fromEvent<Event>(button1, "click").pipe(
+  map((event) => (<HTMLButtonElement>event.target).textContent)
+);
+const text2$ = fromEvent<Event>(button2, "click").pipe(
+  map((event) => (<HTMLButtonElement>event.target).textContent)
+);
 
-const input$ = fromEvent<Event>(input, "input");
-
-input$
+merge(text1$, text2$)
   .pipe(
-    map((e) => (<HTMLInputElement>e.target).value),
-    map((str) => reverse(str)),
     tap((value) => {
       label.textContent = value;
     })

@@ -1,17 +1,22 @@
-import { fromEvent, map, merge, tap } from "rxjs";
+import { Subject, fromEvent, map, merge, tap, Observable } from "rxjs";
 
-const button1 = <HTMLButtonElement>document.querySelector("#button1")!;
-const button2 = <HTMLButtonElement>document.querySelector("#button2")!;
+const buttons = Array.from(document.querySelectorAll("button"));
 const label = <HTMLLabelElement>document.querySelector("#label")!;
 
-const text1$ = fromEvent<Event>(button1, "click").pipe(
-  map((event) => (<HTMLButtonElement>event.target).textContent)
-);
-const text2$ = fromEvent<Event>(button2, "click").pipe(
-  map((event) => (<HTMLButtonElement>event.target).textContent)
+const state$ = new Subject<string>();
+
+const getTextContent = (event: Event) =>
+  (<HTMLButtonElement>event.target).textContent!;
+
+const buttonsObservables: Observable<string>[] = buttons.map((button) =>
+  fromEvent<Event>(button, "click").pipe(map(getTextContent))
 );
 
-merge(text1$, text2$)
+merge(...buttonsObservables)
+  .pipe(tap((str) => state$.next(str)))
+  .subscribe();
+
+state$
   .pipe(
     tap((value) => {
       label.textContent = value;

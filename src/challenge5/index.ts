@@ -1,23 +1,18 @@
-import { Subject, fromEvent, map, merge, tap } from "rxjs";
+import { fromEvent, map, tap, withLatestFrom } from "rxjs";
 
-const button1 = <HTMLButtonElement>document.querySelector("#button1")!;
-const button2 = <HTMLButtonElement>document.querySelector("#button2")!;
+const input = <HTMLInputElement>document.querySelector("#input")!;
+const button = <HTMLButtonElement>document.querySelector("#button")!;
 const label = <HTMLLabelElement>document.querySelector("#label")!;
 
-const state$ = new Subject<string>();
+const input$ = fromEvent<Event>(input, "input").pipe(
+  map((e) => (<HTMLInputElement>e.target).value)
+);
+const click$ = fromEvent<Event>(button, "click");
 
-const getTextContent = (event: Event) =>
-  (<HTMLButtonElement>event.target).textContent!;
-
-const text1$ = fromEvent<Event>(button1, "click").pipe(map(getTextContent));
-const text2$ = fromEvent<Event>(button2, "click").pipe(map(getTextContent));
-
-merge(text1$, text2$)
-  .pipe(tap((str) => state$.next(str)))
-  .subscribe();
-
-state$
+click$
   .pipe(
+    withLatestFrom(input$),
+    map(([_, input]) => input),
     tap((value) => {
       label.textContent = value;
     })

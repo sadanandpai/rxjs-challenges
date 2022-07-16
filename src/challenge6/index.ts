@@ -1,20 +1,18 @@
-import { fromEvent, map, tap, withLatestFrom } from "rxjs";
+import { fromEvent, map, merge, scan, startWith, tap } from "rxjs";
 
-const input = <HTMLInputElement>document.querySelector("#input")!;
-const button = <HTMLButtonElement>document.querySelector("#button")!;
+const minus = <HTMLButtonElement>document.querySelector("#minus")!;
+const plus = <HTMLButtonElement>document.querySelector("#plus")!;
 const label = <HTMLLabelElement>document.querySelector("#label")!;
 
-const input$ = fromEvent<Event>(input, "input").pipe(
-  map((e) => (<HTMLInputElement>e.target).value)
-);
-const click$ = fromEvent<Event>(button, "click");
+const minus$ = fromEvent<Event>(minus, "click").pipe(map(() => -1));
+const plus$ = fromEvent<Event>(plus, "click").pipe(map(() => 1));
 
-click$
+merge(minus$, plus$)
   .pipe(
-    withLatestFrom(input$),
-    map(([_, input]) => input),
+    startWith(0),
+    scan((v, prevV) => v + prevV),
     tap((value) => {
-      label.textContent = value;
+      label.textContent = String(value);
     })
   )
   .subscribe();

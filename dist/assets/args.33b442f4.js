@@ -1,0 +1,1 @@
+import{i as p}from"./tap.3b5cc1bd.js";import{i as t}from"./isScheduler.b11c038e.js";function n(e){return e[e.length-1]}function r(e){return p(n(e))?e.pop():void 0}function f(e){return t(n(e))?e.pop():void 0}function c(e,o){return typeof n(e)=="number"?e.pop():o}export{c as a,r as b,f as p};

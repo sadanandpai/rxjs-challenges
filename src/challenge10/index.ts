@@ -1,18 +1,20 @@
-import { fromEvent, interval, map, takeUntil } from "rxjs";
+import { exhaustMap, fromEvent, interval, map, takeUntil, tap } from 'rxjs';
+import '../header';
 
-const timer = <HTMLLabelElement>document.querySelector("#timer")!;
-const start = <HTMLButtonElement>document.querySelector("#start")!;
-const stop = <HTMLButtonElement>document.querySelector("#stop")!;
+const timer = <HTMLLabelElement>document.querySelector('#timer')!;
+const start = <HTMLButtonElement>document.querySelector('#start')!;
+const stop = <HTMLButtonElement>document.querySelector('#stop')!;
 
-const startClick$ = fromEvent(start, "click").pipe(map(() => true));
-const stopClick$ = fromEvent(stop, "click").pipe(map(() => false));
+const startClick$ = fromEvent(start, 'click');
+const stopClick$ = fromEvent(stop, 'click');
 
-let tenthSecond$ = interval(100);
-startClick$.subscribe(() => {
-  tenthSecond$
-    .pipe(
-      map((item) => item / 10),
-      takeUntil(stopClick$)
-    )
-    .subscribe((num) => (timer.textContent = num + "s"));
-});
+let tenthSecondTillStopped$ = interval(100).pipe(takeUntil(stopClick$));
+startClick$
+  .pipe(
+    exhaustMap(() => tenthSecondTillStopped$),
+    map((item: number) => item / 10),
+    tap((num) => {
+      timer.textContent = num + 's';
+    })
+  )
+  .subscribe();

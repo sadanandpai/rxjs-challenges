@@ -38,6 +38,15 @@ main {
   gap: 1rem;
 }
 
+a img {
+  width: 48px;
+  height: 48px;
+}
+
+h1 {
+  margin-top: 0.5rem;
+}
+
 .challenge {
   font-size: 1.25rem;
   background-color: black;

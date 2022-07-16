@@ -1,21 +1,21 @@
-import "./style.css";
+import './style.css';
 
-import { map, range, tap } from "rxjs";
+import { map, range, tap } from 'rxjs';
 
 const challengesCount = 10;
-const main = document.querySelector("main")!;
+const main = document.querySelector('main')!;
 
 const createChallengeAnchorElement = (idx: number) => {
-  const a = document.createElement("a");
-  a.classList.add("challenge");
+  const a = document.createElement('a');
+  a.classList.add('challenge');
   a.textContent = `Challenge ${idx}`;
-  a.href = `/src/challenge${idx}/`;
+  a.href = `src/challenge${idx}/`;
   return a;
 };
 
 range(1, challengesCount)
   .pipe(
     map(createChallengeAnchorElement),
-    tap((el) => main.appendChild(el))
+    tap((el: HTMLAnchorElement) => main.appendChild(el))
   )
   .subscribe();

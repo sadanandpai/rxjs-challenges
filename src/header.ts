@@ -7,6 +7,6 @@ h1.textContent = headerText;
 document.body.prepend(h1);
 
 const a = document.createElement('a');
-a.href = '/';
+a.href = '../../';
 a.textContent = 'HOME';
 document.body.prepend(a);

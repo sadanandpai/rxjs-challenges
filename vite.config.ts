@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
-const challenges = new Array(10)
+const challenges = new Array(11)
   .fill(0)
   .map((_, idx) => `./src/challenge${idx + 1}/`)
   .reduce((acc, cur, idx) => {

@@ -10,6 +10,7 @@ const click$ = fromEvent<Event>(button, 'click');
 
 click$
   .pipe(
+    // get latest value from input$ on every click
     withLatestFrom(input$),
     map(([_, input]: [Event, string]) => input),
     tap((value: string) => {

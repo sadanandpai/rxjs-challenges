@@ -1,0 +1,10 @@
+.laps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.25rem;
+}
+
+li {
+    list-style: none;
+}

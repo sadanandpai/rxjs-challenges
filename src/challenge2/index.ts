@@ -6,9 +6,7 @@ const label1 = document.querySelector('#label1')!;
 const label2 = document.querySelector('#label2')!;
 
 const input$ = fromEvent<Event>(input, 'input');
-
 const labelText$ = input$.pipe(map((e: Event) => (<HTMLInputElement>e.target).value));
-
 const labelTextReverse$ = labelText$.pipe(map((value: string) => value.split('').reverse().join('')));
 
 labelText$

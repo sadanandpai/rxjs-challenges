@@ -11,6 +11,7 @@ const stopClick$ = fromEvent(stop, 'click');
 let tenthSecondTillStopped$ = interval(100).pipe(takeUntil(stopClick$));
 startClick$
   .pipe(
+    // do not accept clicks till inner observable is not complete (avoid multiple clicks)
     exhaustMap(() => tenthSecondTillStopped$),
     map((item: number) => item / 10),
     tap((num) => {

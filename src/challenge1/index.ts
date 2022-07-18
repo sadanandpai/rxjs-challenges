@@ -8,7 +8,9 @@ const click$ = fromEvent<MouseEvent>(button, 'click');
 
 click$
   .pipe(
+    // transform
     map(() => ''),
+    // for side effects
     tap((value: string) => {
       input.value = value;
     })

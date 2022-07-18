@@ -14,6 +14,7 @@ merge(minus$, plus$)
     startWith(0),
     withLatestFrom(state$),
     map(([change, total]: [number, number]) => total + change),
+    // allow only set of values to pass through
     filter((total: number) => total >= 0),
     tap((total: number) => {
       state$.next(total);

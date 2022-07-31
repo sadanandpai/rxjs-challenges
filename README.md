@@ -2,6 +2,8 @@
   <h1><a href="https://sadanandpai.github.io/rxjs-challenges/dist/">RxJS Challenges</a></h1>
   <h4>Functional Reactive Programming challenges solved using RxJS</h4>
   <img src="https://user-images.githubusercontent.com/12962887/179575600-eca5a9b4-2455-456a-8dbc-5d2b905b3c98.png" alt="rxjs logo" height="100px" />
+  
+  <h4>View all <a href="https://sadanandpai.github.io/rxjs-challenges/dist/">Challenges</a></h4>
 </div>
 
 ---

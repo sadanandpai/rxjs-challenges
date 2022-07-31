@@ -1,0 +1,1 @@
+ul{padding-left:0}li{list-style:none;margin-top:1rem;padding:.25rem;box-shadow:0 5px 30px #00000026;font-weight:700}.loader{position:relative;margin:3rem auto;width:75px;height:75px;border-radius:50%;border:10px solid grey;border-top:10px solid black;animation:spin .5s linear infinite;display:none}@keyframes spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}

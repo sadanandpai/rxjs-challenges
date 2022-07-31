@@ -6,9 +6,10 @@
 
 ---
 
+
 ### Guide to access the challenges without installation
 
-- https://codesandbox.io/s/rxjs-challenges-sm0u05
+- https://codesandbox.io/s/rxjs-challenges-d88rjz
 
 ### Guide to access the challenges with installation 
 
@@ -24,6 +25,9 @@
 - Clear the file `index.ts`
 - Start coding the solution
 
-Note: If you prefer JavaScript, feel free to use JS instead of TS.
+#### Notes
+
+- If you prefer JavaScript, feel free to use JS instead of TS.
+- You need not have knowledge of Angular to try out these challenges and start learning.
 
 Study material for reference: https://rxjs.dev/

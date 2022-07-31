@@ -2,7 +2,7 @@ import './style.css';
 
 import { map, range, tap } from 'rxjs';
 
-const challengesCount = 11;
+const challengesCount = 13;
 const main = document.querySelector('main')!;
 
 const createChallengeAnchorElement = (idx: number) => {
